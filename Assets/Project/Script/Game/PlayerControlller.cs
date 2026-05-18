@@ -24,7 +24,7 @@ public class PlayerControlller : MonoBehaviour
                     Collider2D collider = Physics2D.OverlapPoint(spawnPosition, bubblelayer);
                     collider.gameObject.GetComponent<BubbleVisual>().PopUP();
                     SFXManager.Instance.PlayPopUp();
-                    Destroy(collider.gameObject, 0.2f);
+                    bubblePoolManager.ReturnToPool(collider.transform);
                 }
                 else
                 {

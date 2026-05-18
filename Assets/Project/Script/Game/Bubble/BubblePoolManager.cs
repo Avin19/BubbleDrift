@@ -12,8 +12,7 @@ public class BubblePoolManager : MonoBehaviour
     [SerializeField] private Transform targetpoint;
     private List<Transform> normalBubble = new List<Transform>();
     private List<Transform> heavyBubble = new List<Transform>();
-    private int currentNormalBubble = 0;
-    private int currentHeavyBubble = 0;
+
 
 
     void Start()
@@ -24,20 +23,35 @@ public class BubblePoolManager : MonoBehaviour
 
     public void GetNormalBubble(Vector3 spawnPoint)
     {
-        normalBubble[currentNormalBubble].GetComponent<BubbleVisual>().SetTransfromOfBubble(spawnPoint);
-        normalBubble[currentNormalBubble].gameObject.SetActive(true);
-        currentNormalBubble++;
-        if (currentNormalBubble >= normalBubble.Count)
+        bool check = false;
+        foreach (Transform bubble in normalBubble)
+        {
+            if (!bubble.gameObject.activeSelf)
+            {
+                bubble.GetComponent<BubbleVisual>().SetTransfromOfBubble(spawnPoint);
+                bubble.gameObject.SetActive(true);
+                check = true;
+                break;
+
+            }
+        }
+        if (!check)
         {
             SpawnNormalBubble();
+            GetNormalBubble(spawnPoint);
         }
+
+
+
+
+
     }
 
     private void SpawnNormalBubble()
     {
         for (int i = 0; i <= 5; i++)
         {
-            Transform bubble = Instantiate(bubblePf, transform).GetComponent<Transform>();
+            Transform bubble = Instantiate(bubblePf, transform);
             bubble.GetComponent<BubbleVisual>().SetThePosition(targetpoint.position);
             bubble.GetComponent<BubbleVisual>().SetBubbleType(normalSO);
             normalBubble.Add(bubble);
@@ -58,9 +72,10 @@ public class BubblePoolManager : MonoBehaviour
         }
     }
 
-    public void ReturnToPool()
+    public void ReturnToPool(Transform bubble)
     {
 
+        bubble.gameObject.SetActive(false);
     }
 
 
