@@ -25,9 +25,9 @@ MonoBehaviour:
   testNativeAdvancedId: ca-app-pub-3940256099942544/2247696110
   testAppOpenId: ca-app-pub-3940256099942544/9257395921
   enableGdprConsent: 1
-  requestConsentOnStartup: 1
+  requestConsentOnStartup: 0
   loadBannerOnStart: 1
-  autoShowBanner: 0
+  autoShowBanner: 1
   bannerRetryInitialDelay: 30
   bannerRetryMaxDelay: 300
   interstitialEveryNEvents: 2
@@ -37,7 +37,7 @@ MonoBehaviour:
   rewardedRetryDelaySeconds: 5
   preloadRewardedInterstitial: 1
   rewardedInterstitialRetryDelaySeconds: 5
-  loadNativeOnStart: 0
+  loadNativeOnStart: 1
   nativeRetryDelaySeconds: 10
   loadAppOpenOnStart: 1
   appOpenRetryDelaySeconds: 10

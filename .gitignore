@@ -27,6 +27,7 @@
 /[Aa]ssets/Plugins/Editor/JetBrains*
 
 /[Aa]ssets/TextMesh*Pro/
+/[Aa]ssets/TextMesh*Pro.meta
 *.unitypackage
 
 # Visual Studio cache directory
