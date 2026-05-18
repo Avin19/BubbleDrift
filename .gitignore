@@ -27,8 +27,8 @@
 /[Aa]ssets/Plugins/Editor/JetBrains*
 
 /[Aa]ssets/TextMesh*Pro/
-/[Gg]oogleMobileAds-v10.6.0.unitypackage
-/[Uu]IPackage.unitypackage
+*.unitypackage
+
 # Visual Studio cache directory
 .vs/
 
