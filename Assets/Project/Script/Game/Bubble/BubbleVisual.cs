@@ -33,4 +33,14 @@ public class BubbleVisual : MonoBehaviour
 
         }
     }
+
+    public void PopUP()
+    {
+        /*
+        wobble
+       scale pulse
+       glow increase
+       */
+        transform.DOPunchScale(new Vector3(.85f, .85f, .85f), 0.5f, 5, 1);
+    }
 }
