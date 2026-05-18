@@ -4,15 +4,12 @@ public class PlayerControlller : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] private bool spawnBubble;
-    [SerializeField] private Transform bubblePf;
-    [SerializeField] private Transform bubbleParent;
+
     [SerializeField] private LayerMask bubblelayer;
-    [SerializeField] private Transform targetTransform;
+    [SerializeField] private BubblePoolManager bubblePoolManager;
 
-    void Start()
-    {
 
-    }
+
 
     // Update is called once per frame
     void Update()
@@ -26,13 +23,15 @@ public class PlayerControlller : MonoBehaviour
                 {
                     Collider2D collider = Physics2D.OverlapPoint(spawnPosition, bubblelayer);
                     collider.gameObject.GetComponent<BubbleVisual>().PopUP();
+                    SFXManager.Instance.PlayPopUp();
                     Destroy(collider.gameObject, 0.2f);
                 }
                 else
                 {
+                    bubblePoolManager.GetNormalBubble(spawnPosition);
 
-                    BubbleVisual bubble = Instantiate(bubblePf, spawnPosition, Quaternion.identity, bubbleParent).GetComponent<BubbleVisual>();
-                    bubble.SetThePosition(targetTransform.position);
+                    SFXManager.Instance.BubbleSpawnAudio();
+
                 }
 
             }

@@ -5,9 +5,18 @@ public class BubbleVisual : MonoBehaviour
 {
     private Vector3 movePoint = new Vector3(0f, 0f, 0f);
     private Rigidbody2D rigidbody2D;
+    private BubbleTypeSO bubbleTypeSO;
     public void SetThePosition(Vector3 _movePoint)
     {
         movePoint = _movePoint;
+    }
+    public void SetBubbleType(BubbleTypeSO _bubbleTypeSO)
+    {
+        bubbleTypeSO = _bubbleTypeSO;
+    }
+    public void SetTransfromOfBubble(Vector3 spawnPoint)
+    {
+        transform.position = spawnPoint;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,7 +36,7 @@ public class BubbleVisual : MonoBehaviour
     void Update()
     {
         if (transform.position != movePoint)
-        { rigidbody2D.DOMove(movePoint, 3f, false); }
+        { rigidbody2D.DOMove(movePoint, bubbleTypeSO.Speed, false); }
         else
         {
 
