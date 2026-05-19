@@ -65,9 +65,9 @@ public class BubblePoolManager : MonoBehaviour
     }
     private void Spawner(Transform _bubble, Vector3 target)
     {
-        _bubble.GetComponent<BubbleVisual>().SetTransfromOfBubble(target);
+        _bubble.GetComponent<BubbleMovement>().SetTransfromOfBubble(target);
         _bubble.gameObject.SetActive(true);
-        SFXManager.Instance.PlaySfX(_bubble.GetComponent<BubbleVisual>().GetBubbleType().spawnClip);
+        SFXManager.Instance.PlaySfX(_bubble.GetComponent<BubbleReferenceSO>().GetBubbleTypeSO().spawnClip);
     }
     public void WeightSpawning(int weight, Vector3 spawnPoint)
     {
@@ -87,8 +87,8 @@ public class BubblePoolManager : MonoBehaviour
         {
             Transform bubble = Instantiate(bubblePf, transform);
             bubble.gameObject.name = "Normalbubble";
-            bubble.GetComponent<BubbleVisual>().SetThePosition(targetpoint.position);
-            bubble.GetComponent<BubbleVisual>().SetBubbleType(normalSO);
+            bubble.GetComponent<BubbleMovement>().SetThePosition(targetpoint.position);
+            bubble.GetComponent<BubbleReferenceSO>().SetBubbleTypeSO(normalSO);
             normalBubble.Add(bubble);
             bubble.gameObject.SetActive(false);
         }
@@ -101,8 +101,8 @@ public class BubblePoolManager : MonoBehaviour
         {
             Transform bubble = Instantiate(bubblePf, transform);
             bubble.gameObject.name = "Heavybubble";
-            bubble.GetComponent<BubbleVisual>().SetThePosition(targetpoint.position);
-            bubble.GetComponent<BubbleVisual>().SetBubbleType(heavySO);
+            bubble.GetComponent<BubbleMovement>().SetThePosition(targetpoint.position);
+            bubble.GetComponent<BubbleReferenceSO>().SetBubbleTypeSO(heavySO);
             heavyBubble.Add(bubble);
             bubble.gameObject.SetActive(false);
         }

@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: -5104725821481587366}
   - component: {fileID: 53793605202363483}
   - component: {fileID: 4347436023455196143}
+  - component: {fileID: 4611017283733474318}
+  - component: {fileID: 232182287284996410}
   m_Layer: 6
   m_Name: Bubble PF
   m_TagString: Untagged
@@ -170,6 +172,30 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4611017283733474318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3208493663448230420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c49a19e5c1596d42b4d9ee78db7a3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BubbleMovement
+--- !u!114 &232182287284996410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3208493663448230420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f2e8df17172dd845a25f641e32cb5bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BubbleReferenceSO
 --- !u!1 &4689782481237605885
 GameObject:
   m_ObjectHideFlags: 0

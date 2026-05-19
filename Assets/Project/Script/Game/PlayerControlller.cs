@@ -23,7 +23,7 @@ public class PlayerControlller : MonoBehaviour
                 {
                     Collider2D collider = Physics2D.OverlapPoint(spawnPosition, bubblelayer);
                     collider.gameObject.GetComponent<BubbleVisual>().PopUP();
-                    SFXManager.Instance.PlaySfX(collider.gameObject.GetComponent<BubbleVisual>().GetBubbleType().popAudio);
+                    SFXManager.Instance.PlaySfX(collider.gameObject.GetComponent<BubbleReferenceSO>().GetBubbleTypeSO().popAudio);
                     bubblePoolManager.ReturnToPool(collider.transform);
                 }
                 else
