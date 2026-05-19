@@ -14,5 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BubbleTypeSO
   bubbleType: 0
   Speed: 3
+  mergeType: 1
+  rarityType: 0
   popAudio: {fileID: 8300000, guid: bd12417c6cdc9ba4b8b69819fe36a9ab, type: 3}
   spawnClip: {fileID: 8300000, guid: 171f5371863430649afd45ad50ae60cd, type: 3}
+  weight: 90

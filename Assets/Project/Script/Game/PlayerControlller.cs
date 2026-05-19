@@ -23,14 +23,15 @@ public class PlayerControlller : MonoBehaviour
                 {
                     Collider2D collider = Physics2D.OverlapPoint(spawnPosition, bubblelayer);
                     collider.gameObject.GetComponent<BubbleVisual>().PopUP();
-                    SFXManager.Instance.PlayPopUp();
+                    SFXManager.Instance.PlaySfX(collider.gameObject.GetComponent<BubbleVisual>().GetBubbleType().popAudio);
                     bubblePoolManager.ReturnToPool(collider.transform);
                 }
                 else
                 {
-                    bubblePoolManager.GetNormalBubble(spawnPosition);
+                    //bubblePoolManager.GetNormalBubble(spawnPosition);
+                    int weight = Random.Range(1, 100);
+                    bubblePoolManager.WeightSpawning(weight, spawnPosition);
 
-                    SFXManager.Instance.BubbleSpawnAudio();
 
                 }
 

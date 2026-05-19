@@ -4,8 +4,7 @@ public class SFXManager : MonoBehaviour
 {
     public static SFXManager Instance;
     [Header("Audios")]
-    [SerializeField] private AudioClip popUpAudio;
-    [SerializeField] private AudioClip bubbleSpawnAudio;
+
     private AudioSource sfxManager;
 
 
@@ -23,7 +22,7 @@ public class SFXManager : MonoBehaviour
         sfxManager = GetComponent<AudioSource>();
     }
 
-    public void PlayPopUp() => sfxManager.PlayOneShot(popUpAudio);
-    public void BubbleSpawnAudio() => sfxManager.PlayOneShot(bubbleSpawnAudio);
+    public void PlaySfX(AudioClip _audioClip) => sfxManager.PlayOneShot(_audioClip);
+
 
 }

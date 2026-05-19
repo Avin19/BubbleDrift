@@ -1,6 +1,14 @@
 using UnityEngine;
 using DG.Tweening;
 
+// Reads BubbleTypeSO:
+
+// color
+// glow
+// scale
+// material
+
+// Applies visuals.
 public class BubbleVisual : MonoBehaviour
 {
     private Vector3 movePoint = new Vector3(0f, 0f, 0f);
@@ -13,6 +21,10 @@ public class BubbleVisual : MonoBehaviour
     public void SetBubbleType(BubbleTypeSO _bubbleTypeSO)
     {
         bubbleTypeSO = _bubbleTypeSO;
+    }
+    public BubbleTypeSO GetBubbleType()
+    {
+        return bubbleTypeSO;
     }
     public void SetTransfromOfBubble(Vector3 spawnPoint)
     {
@@ -51,5 +63,9 @@ public class BubbleVisual : MonoBehaviour
        glow increase
        */
         transform.DOPunchScale(new Vector3(.85f, .85f, .85f), 0.5f, 5, 1);
+
+        //Reset the Scale
+        transform.DOPunchScale(new Vector3(1f, .1f, .1f), 0.2f, 5, 1);
+
     }
 }

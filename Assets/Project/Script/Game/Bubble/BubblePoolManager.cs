@@ -1,6 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 using UnityEngine;
 
 public class BubblePoolManager : MonoBehaviour
@@ -28,8 +26,8 @@ public class BubblePoolManager : MonoBehaviour
         {
             if (!bubble.gameObject.activeSelf)
             {
-                bubble.GetComponent<BubbleVisual>().SetTransfromOfBubble(spawnPoint);
-                bubble.gameObject.SetActive(true);
+                Spawner(bubble, spawnPoint);
+
                 check = true;
                 break;
 
@@ -39,12 +37,48 @@ public class BubblePoolManager : MonoBehaviour
         {
             SpawnNormalBubble();
             GetNormalBubble(spawnPoint);
+
         }
 
+    }
+    public void GetHeavyBubble(Vector3 spawnPoint)
+    {
+        bool check = false;
+        foreach (Transform bubble in heavyBubble)
+        {
+            if (!bubble.gameObject.activeSelf)
+            {
+                Spawner(bubble, spawnPoint);
 
+                check = true;
+                break;
 
+            }
+        }
+        if (!check)
+        {
+            SpawnHeavyBubble();
+            GetHeavyBubble(spawnPoint);
 
+        }
 
+    }
+    private void Spawner(Transform _bubble, Vector3 target)
+    {
+        _bubble.GetComponent<BubbleVisual>().SetTransfromOfBubble(target);
+        _bubble.gameObject.SetActive(true);
+        SFXManager.Instance.PlaySfX(_bubble.GetComponent<BubbleVisual>().GetBubbleType().spawnClip);
+    }
+    public void WeightSpawning(int weight, Vector3 spawnPoint)
+    {
+        if (weight < normalSO.weight)
+        {
+            GetNormalBubble(spawnPoint);
+        }
+        else if (weight - normalSO.weight < heavySO.weight)
+        {
+            GetHeavyBubble(spawnPoint);
+        }
     }
 
     private void SpawnNormalBubble()
@@ -52,6 +86,7 @@ public class BubblePoolManager : MonoBehaviour
         for (int i = 0; i <= 5; i++)
         {
             Transform bubble = Instantiate(bubblePf, transform);
+            bubble.gameObject.name = "Normalbubble";
             bubble.GetComponent<BubbleVisual>().SetThePosition(targetpoint.position);
             bubble.GetComponent<BubbleVisual>().SetBubbleType(normalSO);
             normalBubble.Add(bubble);
@@ -64,7 +99,8 @@ public class BubblePoolManager : MonoBehaviour
     {
         for (int i = 0; i <= 5; i++)
         {
-            Transform bubble = Instantiate(bubblePf, transform).GetComponent<Transform>();
+            Transform bubble = Instantiate(bubblePf, transform);
+            bubble.gameObject.name = "Heavybubble";
             bubble.GetComponent<BubbleVisual>().SetThePosition(targetpoint.position);
             bubble.GetComponent<BubbleVisual>().SetBubbleType(heavySO);
             heavyBubble.Add(bubble);

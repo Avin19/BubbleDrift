@@ -13,3 +13,13 @@ public enum BubbleType
     BlackHole,
 
 }
+
+public enum Rarity
+{
+    Common,
+    Rare,
+    Epic,
+    Legendary,
+    Mythic,
+
+}
